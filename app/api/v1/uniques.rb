@@ -3,7 +3,7 @@ module V1
     resource :uniques do
       desc "/uniques"
       get do
-        uniques = Unique.all
+        uniques = Unique.all.includes(item_mods: :mod)
 
         present :uniques, uniques, with: Entities::Unique
         present :total_count, uniques.count

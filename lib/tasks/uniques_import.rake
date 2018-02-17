@@ -1,5 +1,7 @@
+require 'open-uri'
+
 # UNIQUE_ITEM_TYPES = %w{amulet belt ring quiver body_armour boot glove helmet shield axe bow claw dagger fishing_rod mace stave sword wand life_flask mana_flask hybrid_flask utility_flask jewel map}
-UNIQUE_ITEM_TYPES = %w{bow}
+UNIQUE_ITEM_TYPES = %w{body_armour bow}
 
 def import_uniques!(type)
   plural_type = type.pluralize
@@ -21,40 +23,6 @@ def import_uniques!(type)
       puts "#{e.message} || type: #{type} || i"
     end
   end
-
-  #   nameTd = tds[0]
-  #   map_tier = tds[1].text().to_i - 67 if type == "map"
-
-  #   item_type = type.match(/flask/i) ? "flask" : type
-
-  #   img = nameTd.css("img")
-
-  #   image_url = ""
-  #   if img.present?
-  #     image_url = img.attr("src").value.gsub(/\?version.*/, '')
-  #     image_url = prepend_gamepedia_root_url(image_url)
-  #   end
-
-  #   bling = {
-  #     name: nameTd.css("a").first.text(),
-  #     image_url: image_url,
-  #     base_name: "",
-  #     rarity: "unique",
-  #     item_type: item_type
-  #   }
-
-  #   bling.merge!(map_tier: map_tier) if type == "map"
-
-  #   blings << bling
-
-  #   puts bling
-  #   sleep(0.3)
-  # end
-
-  # File.open(Rails.root.join(file_path).to_s, "w+") do |f|
-  #   f.write("#{constant_name} = ")
-  #   f.write JSON.pretty_generate(blings.as_json)
-  # end
 end
 
 task import_all_uniques: :environment do

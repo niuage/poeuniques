@@ -11,9 +11,10 @@ class CreateUniques < ActiveRecord::Migration[5.1]
       t.integer :required_str
       t.integer :level_requirement
 
-      t.integer :block_chance
-
       # Defense
+      t.integer :min_chance_to_block
+      t.integer :max_chance_to_block
+
       t.integer :min_armour
       t.integer :max_armour
 
@@ -43,7 +44,16 @@ class CreateUniques < ActiveRecord::Migration[5.1]
       t.integer :flask_min_usage
       t.integer :flask_max_usage
 
+      t.integer :flask_capacity
+
       t.string :flask_buff_effect
+
+      # Damage
+      t.string :physical_damage
+      t.string :lightning_damage
+      t.string :fire_damage
+      t.string :cold_damage
+      t.string :chaos_damage
 
       # DPS
       t.float :min_total_dps
@@ -58,9 +68,12 @@ class CreateUniques < ActiveRecord::Migration[5.1]
       t.float :min_ele_dps
       t.float :max_ele_dps
 
-      t.float :critical_strike_chance
+      # Offense
+      t.string :critical_strike_chance
 
-      t.float :aps
+      t.string :attacks_per_second
+
+      t.integer :weapon_range
 
       # Misc
       t.integer :quality
